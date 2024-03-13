@@ -1,0 +1,38 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/EventTicket.sol": {
+      "content": ""
+    },
+    "contracts/YourContract.sol": {
+      "content": "//SPDX-License-Identifier: MIT\r\npragma solidity 0.8.17;\r\n\r\ncontract YourContract {\r\n\t// State Variables\r\n\taddress public immutable owner;\r\n\tstring public greeting = \"Building Unstoppable Apps on Conflux!!\";\r\n\tuint256 public totalCounter = 0;\r\n\tmapping(address => uint) public userGreetingCounter;\r\n\t\r\n\t// Constructor: Called once on contract deployment\r\n\t// Check packages/hardhat/deploy/00_deploy_your_contract.ts\r\n\tconstructor(address _owner) {\r\n\t\towner = _owner;\r\n\t}\r\n\r\n\t// Modifier: used to define a set of rules that must be met before or after a function is executed\r\n\t// Check the withdraw() function\r\n\tmodifier isOwner() {\r\n\t\t// msg.sender: predefined variable that represents address of the account that called the current function\r\n\t\trequire(msg.sender == owner, \"Not the Owner\");\r\n\t\t_;\r\n\t}\r\n\r\n\tfunction transferEther(address payable _recipient) public payable {\r\n        require(msg.value > 0, \"Must send ether to transfer\");\r\n        _recipient.transfer(msg.value);\r\n    }\r\n\r\n\tfunction setGreeting(string memory _newGreeting) public payable {\r\n\t\r\n\t\t// Change state variables\r\n\t\tgreeting = _newGreeting;\r\n\t\ttotalCounter += 1;\r\n\t\tuserGreetingCounter[msg.sender] += 1;\r\n\t}\r\n\r\n\tfunction withdraw() public isOwner {\r\n\t\t(bool success, ) = owner.call{ value: address(this).balance }(\"\");\r\n\t\trequire(success, \"Failed to send Ether\");\r\n\t}\r\n\r\n\treceive() external payable {}\r\n}\r\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}

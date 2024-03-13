@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/EventTicket.sol": {
+      "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.17;\r\n\r\ncontract EventTicket {\r\n    struct Event {\r\n        string name;\r\n        string description;\r\n        uint256 date;\r\n        uint256 ticketPrice;\r\n        uint256 totalTickets;\r\n        uint256 ticketsSold;\r\n    }\r\n\r\n    Event[] public events;\r\n    mapping(uint256 => mapping(address => uint256)) public ticketsOwned;\r\n    address payable public owner;\r\n\r\n    constructor() {\r\n        owner = payable(msg.sender);\r\n    }\r\n\r\n    modifier onlyOwner() {\r\n        require(msg.sender == owner, \"Only the owner can perform this action.\");\r\n        _;\r\n    }\r\n\r\n    function createEvent(string memory name, string memory description, uint256 date, uint256 ticketPrice, uint256 totalTickets) public onlyOwner {\r\n        events.push(Event(name, description, date, ticketPrice, totalTickets, 0));\r\n    }\r\n\r\n    function buyTicket(uint256 eventId) public payable {\r\n        require(eventId < events.length, \"Event does not exist.\");\r\n        Event storage selectedEvent = events[eventId]; // Correct use of 'selectedEvent'\r\n        require(block.timestamp < selectedEvent.date, \"Event has already occurred.\");\r\n        require(msg.value == selectedEvent.ticketPrice, \"Incorrect ticket price.\");\r\n        require(selectedEvent.ticketsSold < selectedEvent.totalTickets, \"All tickets have been sold.\");\r\n\r\n        selectedEvent.ticketsSold += 1;\r\n        ticketsOwned[eventId][msg.sender] += 1;\r\n    }\r\n\r\n    function verifyTicket(uint256 eventId, address attendee) public view returns (bool) {\r\n        return ticketsOwned[eventId][attendee] > 0;\r\n    }\r\n\r\n    function withdrawFunds() public onlyOwner {\r\n        owner.transfer(address(this).balance);\r\n    }\r\n\r\n    function getEventCount() public view returns (uint256) {\r\n        return events.length;\r\n    }\r\n\r\n    function getEventDetails(uint256 eventId) public view returns (string memory name, string memory description, uint256 date, uint256 ticketPrice, uint256 totalTickets, uint256 ticketsSold) {\r\n        require(eventId < events.length, \"Event does not exist.\");\r\n        Event storage selectedEvent = events[eventId]; // Corrected variable name to 'selectedEvent'\r\n        return (selectedEvent.name, selectedEvent.description, selectedEvent.date, selectedEvent.ticketPrice, selectedEvent.totalTickets, selectedEvent.ticketsSold);\r\n    }\r\n\r\n    function getUserTicketCount(uint256 eventId, address user) public view returns (uint256) {\r\n        require(eventId < events.length, \"Event does not exist.\");\r\n        return ticketsOwned[eventId][user];\r\n    }\r\n}\r\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
