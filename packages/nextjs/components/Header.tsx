@@ -29,10 +29,6 @@ export const menuLinks: HeaderMenuLink[] = [
     icon: <img className="h-10 w-10" alt="events" src="events.svg" />,
   },
   {
-    href: "/language",
-    icon: <img className="h-10 w-10" alt="language" src="globe-hemisphere-west.svg" />,
-  },
-  {
     href: "/greeting",
     icon: <img className="h-10 w-10" alt="greeting" src="greeting.svg" />,
   },

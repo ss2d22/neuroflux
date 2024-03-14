@@ -59,7 +59,7 @@ const Events: NextPage = (): JSX.Element => {
               </div>
             </div>
           </div>
-          <button className="flex justify-center btn w-[80%] ml-36 mr-96 mt-10 custom-pink font-mono text-xl">Create Event</button>
+          <button className="flex justify-center btn w-full ml-20 mr-96 mt-10 custom-pink font-mono text-xl">Create Event</button>
         </div>
         <div className="grid gap-6 my-20 ml-60 mr-16 grid-cols-3 overflow-auto w-full">
           <div className="border border-pink-500 border-solid border-4 w-full h-60 rounded-xl">Event 1</div>
