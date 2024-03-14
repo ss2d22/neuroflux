@@ -3,8 +3,9 @@
 @import "tailwindcss/utilities";
 
 :root,
-[data-theme] {
-  background: oklch(var(--b2));
+
+body {
+  background: linear-gradient(to left, rgba(18.85,26.57,52.49,1) 19.5%, rgb(3,7,18,1) 40.84%);
 }
 
 body {
@@ -29,4 +30,19 @@ p {
 
 .btn.btn-ghost {
   @apply shadow-none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+.custom-pink {
+  background-color: #fc0ff5; 
+  &:hover {
+    background-color: #c90cc4; 
+  }
 }
