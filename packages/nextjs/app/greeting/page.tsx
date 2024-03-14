@@ -40,7 +40,7 @@ const Greeting: NextPage = (): JSX.Element => {
   };
 
   return (
-    <div className="bg-white flex flex-col justify-center w-full [background:linear-gradient(270deg,rgb(18.85,26.57,52.49)_19.5%,rgb(3,7,18)_40.84%)] ">
+<div className="bg-white flex flex-col justify-center w-full [background:linear-gradient(270deg,rgb(18.85,26.57,52.49)_19.5%,rgb(3,7,18)_40.84%)] ">
       <Header />
       <div className="flex flex-col items-center justify-center w-full mt-16 space-y-16">
         <h1 className="text-center text-7xl [text-shadow:0px_4px_4px_#00000040] font-mono font-normal ">
@@ -48,7 +48,7 @@ const Greeting: NextPage = (): JSX.Element => {
         </h1>
         <form
           onSubmit={handleSubmitGreeting}
-          className="flex flex-row items-center justify-center w-[60%] mt-16 space-x-10"
+          className="flex flex-row items-center justify-center w-full mt-16 space-x-10"
         >
           <InputBase
             name="greet"
