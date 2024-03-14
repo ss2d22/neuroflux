@@ -47,7 +47,7 @@ const config: HardhatUserConfig = {
       },
     },
     confluxESpaceTestnet: {
-      url: "https://evmtestnet.confluxrpc.com",
+      url: "https://evmtestnet.confluxrpc.com/3QJppea1tscHuUaUeoCXN4RaoKwwNyd378ZZcbnp7dKSHUqunEyEjnWPrGzPnnG3bCRQL3nGNRwryKVpoCVLqPJXU",
       accounts: [deployerPrivateKey],
     },
     confluxESpace: {
