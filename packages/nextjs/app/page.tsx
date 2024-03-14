@@ -7,17 +7,18 @@ const Home: NextPage = (): JSX.Element => {
   return (
     <div style={{ position: "relative" }}>
       <Header />
-      <div className="flex flex-col relative">
+      <div className="flex flex-row relative">
         <div className="flex flex-col w-[40%]">
-          <img className="w-[60%] h-[60%]" style={{ zIndex: 1 }} alt="Neuroflex" src="Neuroflex.png" />
+          <img className="my-20 w-[70%] h-[0.7w]" style={{ zIndex: 1 }} alt="Neuroflex" src="Neuroflex.png" />
           <div
-            className="w-[60%] ml-20 drop-shadow-2xl [text-shadow:0px_4px_4px_#00000040] [font-family:'Krona_One-Regular',Helvetica] font-normal text-white text-[30px] tracking-[7.50px] leading-[75px] "
+            className="grid grid-rows w-[60%] ml-20 drop-shadow-2xl [text-shadow:0px_4px_4px_#00000040] font-mono font-normal text-white text-8xl tracking-wide leading-normal "
             style={{ zIndex: 1 }}
           >
-            Transfer Your <br />
-            Assets Swiftly
+            Transfer Your 
+            Assets Swiftly<div className="row-end animate-pulse opacity-20">|</div>
           </div>
         </div>
+        <img className= "animate-pulse mx-60 my-20 w-[50%]" src="computer-screen.svg" />
       </div>
     </div>
   );

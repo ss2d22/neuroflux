@@ -12,16 +12,16 @@ const imageUrl = `${baseUrl}/thumbnail.jpg`;
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Conflux Scaffold App",
-    template: "%s | Conflux Scaffold",
+    default: "Neuroflux",
+    template: "%s | Neuroflux",
   },
-  description: "Build on Conflux with 🏗 Scaffold-ETH 2",
+  description: "",
   openGraph: {
     title: {
-      default: "Conflux Scaffold App",
-      template: "%s | Build Dapps using Scaffold-ETH 2",
+      default: "Neuroflux",
+      template: "%s | Neuroflux",
     },
-    description: "Conflux App built with 🏗 Scaffold-ETH 2",
+    description: "",
     images: [
       {
         url: imageUrl,
@@ -32,13 +32,13 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     images: [imageUrl],
     title: {
-      default: "Scaffold-ETH 2",
-      template: "%s | Scaffold-ETH 2",
+      default: "Neuroflux",
+      template: "%s | Neuroflux",
     },
-    description: "Built with 🏗 Scaffold-ETH 2",
+    description: "",
   },
   icons: {
-    icon: [{ url: "/favicon.png", sizes: "32x32", type: "image/png" }],
+    icon: [{ url: "/Neuroflex.png", sizes: "32x32", type: "image/png" }],
   },
 };
 
